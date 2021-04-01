@@ -23,7 +23,7 @@ class HomeState extends State<Home> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Toko Bangunan'),
+        title: Text('Daftar Barang'),
         leading: new IconButton(
         icon : new Icon(Icons.home,
           color: Colors.white,

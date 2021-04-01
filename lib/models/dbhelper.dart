@@ -32,13 +32,6 @@ class DbHelper {
  )
  ''');
 
- await db.execute('''
- CREATE TABEL pelanggan(
-   id INTEGER PRIMARY KEY AUTOINCREMENT,
-   name TEXT,
-   nomor TEXT
-   )
-   ''');
  }
 //select databases
  Future<List<Map<String, dynamic>>> select() async {
