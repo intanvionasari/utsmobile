@@ -1,12 +1,12 @@
-class Item {
-  int _id;
-  String _name;
-  int _price;
-  int _stock;
-  String _kode;
+class Item {//membuat class item
+  int _id;//atribut id dengan tipe data int
+  String _name;//atribut name dengan tipe data string
+  int _price;//atribut price dengan tipe data int
+  int _stock;//atribut stock dengan tipe data int
+  String _kode;//atribut kode dengan tipe data string
 
 
-
+  //membuat setter dan getter pada masing-masing atribut
   int get id => _id;
   String get name => this._name;
   set name(String value) => this._name = value;

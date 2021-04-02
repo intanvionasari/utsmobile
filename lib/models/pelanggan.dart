@@ -1,9 +1,9 @@
-class Pelanggan {
-  int _id;
-  String _name;
-  String _nomor;
+class Pelanggan {//membuat class pelanggan
+  int _id;//atribut id dengan tipe data integer
+  String _name;//atribut name dengan tipe data string
+  String _nomor;//atribut nomor dengan tipe data string
 
-
+  //membuat setter dan getter pada tiap atribut
   int get id => _id;
   String get name => this._name;
   set name(String value) => this._name = value;
