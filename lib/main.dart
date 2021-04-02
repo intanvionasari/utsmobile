@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uts_intan/models/home.dart';
 
+import 'models/homePel.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -29,16 +31,7 @@ class MyApp extends StatelessWidget {
                   width: 200.0,//mengatur lebar gambar
                   height: 150.0),
           Raisedbtn(),
-          RaisedButton.icon(
-            onPressed: (){ print('Button Clicked.'); },
-            shape: RoundedRectangleBorder(
-                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
-            label: Text('Data Pelanggan', 
-                   style: TextStyle(color: Colors.white),),
-            icon: Icon(Icons.account_box_sharp,color :Colors.white,), 
-            textColor: Colors.white,
-            splashColor: Colors.white,
-            color: Colors.lightBlue,),
+          Raisedbtn2(),
         ],)
       )
      )
@@ -68,5 +61,29 @@ class Raisedbtn extends StatelessWidget {
       textColor: Colors.white,
       splashColor: Colors.white,
       color: Colors.green,);
+  }
+}
+class Raisedbtn2 extends StatelessWidget {
+  const Raisedbtn2({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton.icon(
+            onPressed: (){  Navigator.push(//jika di pencet atau diklik akan berpindah halaman
+        context,
+        MaterialPageRoute(builder: (context) => new HomePel()//menyetting halaman yang dituju
+        ),
+      );
+      },
+            shape: RoundedRectangleBorder(
+                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            label: Text('Data Pelanggan', 
+                   style: TextStyle(color: Colors.white),),
+            icon: Icon(Icons.account_box_sharp,color :Colors.white,), 
+            textColor: Colors.white,
+            splashColor: Colors.white,
+            color: Colors.lightBlue,);
   }
 }
