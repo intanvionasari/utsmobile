@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uts_intan/models/home.dart';
-
+import 'models/hitung.dart';
 import 'models/homePel.dart';
 
 void main() => runApp(MyApp());
@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
                   height: 150.0),
           Raisedbtn(),
           Raisedbtn2(),
+          Raisedbtn3(),
         ],)
       )
      )
@@ -85,5 +86,31 @@ class Raisedbtn2 extends StatelessWidget {
             textColor: Colors.white,
             splashColor: Colors.white,
             color: Colors.lightBlue,);
+  }
+}
+
+
+class Raisedbtn3 extends StatelessWidget {
+  const Raisedbtn3({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton.icon(
+            onPressed: (){  Navigator.push(//jika di pencet atau diklik akan berpindah halaman
+        context,
+        MaterialPageRoute(builder: (context) => new Hitung()//menyetting halaman yang dituju
+        ),
+            );
+            },
+            shape: RoundedRectangleBorder(
+                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            label: Text(' Hitung Keramik ', 
+                   style: TextStyle(color: Colors.white),),
+            icon: Icon(Icons.calculate_rounded,color :Colors.white,), 
+            textColor: Colors.white,
+            splashColor: Colors.white,
+            color: Colors.blue,);
   }
 }
