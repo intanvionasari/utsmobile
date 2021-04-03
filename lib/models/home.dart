@@ -64,15 +64,16 @@ class HomeState extends State<Home> {
     return ListView.builder(//membuat list builder
       itemCount: count,
       itemBuilder: (BuildContext context, int index) {
-        return Card(//membuat card
+        return Card(
+        color : Colors.teal,//membuat card
          child : ListTile(//membuat listtile
            title: Text(//text untuk judul
               this.itemList[index].name,//mengambil data name yang telah diinputkan
               style: textStyle,//style pada text
             ),
-            subtitle: Text("Harga " + this.itemList[index].price.toString()//mengambil data harga yang telah diinputkan
-            + " ,Kode " + this.itemList[index].kode //mengambil data kode yang telah diinputkan
-            + " ,Stok " + this.itemList[index].stock.toString()),//menagmbil data stok yang telah diinputkan
+            subtitle: Text("Harga: Rp." + this.itemList[index].price.toString()//mengambil data harga yang telah diinputkan
+            + " ,Kode: " + this.itemList[index].kode //mengambil data kode yang telah diinputkan
+            + " ,Stok: " + this.itemList[index].stock.toString()),//menagmbil data stok yang telah diinputkan
             trailing: GestureDetector(
               child: Icon(Icons.delete),//memberi icon pada card
               onTap: () async {//jika icon dipencet akan menghapus data 
@@ -94,7 +95,7 @@ class HomeState extends State<Home> {
             },
             leading: CircleAvatar(//membuat gambar agar membentuk lingkaran
               child: Text(this.itemList[index].name[0], // ambil karakter pertama text
-                      style: TextStyle(fontSize: 20),//mengatur besar text
+                        style: TextStyle(fontSize: 20, color: Colors.black),//mengatur besar text
             ),
             ),  
          ),  
