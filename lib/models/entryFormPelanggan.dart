@@ -44,7 +44,7 @@ class EntryFormPelangganState extends State<EntryFormPelanggan> {
                             pelanggan.name = nameController.text;
                             pelanggan.nomor = nomorController.text;
                           }
-                          // kembali ke layar sebelumnya dengan membawa objek item
+                          // kembali ke layar sebelumnya dengan membawa objek pelanggan
                           Navigator.pop(context, pelanggan);
             },
             ),

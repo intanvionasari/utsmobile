@@ -3,6 +3,7 @@ import 'dart:async';//mengimport asyc
 import 'dart:io';//mengimport io
 import 'package:path_provider/path_provider.dart';//mengimport package path provider
 import 'item.dart';//mengimport class item
+import 'pegawai.dart';
 import 'pelanggan.dart';//mengimport class pelanggan
 
 class DbHelper {//membuat class dbhelper
@@ -46,6 +47,15 @@ class DbHelper {//membuat class dbhelper
  )
  ''');
  
+ //membuat tabel ketiga pegawai dengan atribut id,name,dan jabatan
+ await db.execute('''
+ CREATE TABLE pegawai(
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT,
+ jabatan TEXT
+ )
+ ''');
+
  }
 
 //select databases
@@ -59,6 +69,13 @@ return mapList;//mereturn maplist
  Future<List<Map<String, dynamic>>> selectpel() async {
  Database db = await this.initDb();
  var mapList = await db.query('pelanggan', orderBy: 'name');//variabel maplist untuk select tabel pelanggan serta diurutkan berdasarkan name
+return mapList;
+ }
+
+ //select  3
+ Future<List<Map<String, dynamic>>> selectpeg() async {
+ Database db = await this.initDb();
+ var mapList = await db.query('pegawai', orderBy: 'name');
 return mapList;
  }
  
@@ -75,6 +92,14 @@ return mapList;
  int count = await db.insert('pelanggan', object.toMap());//insert pada tabel pelanggan
  return count; //mereturn variable count
  }
+//insert pada tabel ketiga pegawai
+ Future<int> insertpeg(Pegawai object) async {//perintah insert dg metod insertpeg
+ Database db = await this.initDb();
+ int count = await db.insert('pegawai', object.toMap());//insert pada tabel pegawai
+ return count;
+ }
+
+
 
 //update item
  Future<int> update(Item object) async {//perintah update tabel dg method update
@@ -94,6 +119,14 @@ return mapList;
  return count;//mengembalikan nilai count
  }
 
+ //update tabel pegawai
+ Future<int> updatepeg(Pegawai object) async {
+ Database db = await this.initDb();
+ int count = await db.update('pegawai', object.toMap(),
+ where: 'id=?',
+ whereArgs: [object.id]);
+ return count;
+ }
 
  //delete pd tabel item
  Future<int> delete(int id) async {//perintah delete dg method delete
@@ -111,6 +144,15 @@ return mapList;
  where: 'id=?',//memeriksa id
  whereArgs: [id]);
  return count;//mengembalikan nilai count
+ }
+
+//delete pada pegawai
+ Future<int> deletepeg(int id) async {
+ Database db = await this.initDb();
+ int count = await db.delete('pegawai',
+ where: 'id=?',
+ whereArgs: [id]);
+ return count;
  }
 
 //tabel item
@@ -134,6 +176,18 @@ return mapList;
  }
  return pelangganList;//mengembalikan nilai pelangganlist
  }
+
+ //tabel pegawai
+ Future<List<Pegawai>> getPegawaiList() async {
+ var pegawaiMapList = await selectpeg();
+ int count = pegawaiMapList.length;
+ List<Pegawai> pegawaiList = List<Pegawai>();
+ for (int i=0; i<count; i++) {
+ pegawaiList.add(Pegawai.fromMap(pegawaiMapList[i]));
+ }
+ return pegawaiList;
+ } 
+
 
  factory DbHelper() {//method dbhelper
  if (_dbHelper == null) {//kondisi jika dbhelper null

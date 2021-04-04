@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';//mengimport matrial
 import 'package:uts_intan/models/home.dart';//mengimport class home
+import 'package:uts_intan/models/homePeg.dart';
 import 'models/hitung.dart';//import class hitung
 import 'models/homePel.dart';//import class homePel
 
@@ -31,8 +32,9 @@ class MyApp extends StatelessWidget {//menggunakan stateless widget
                   width: 200.0,//mengatur lebar dan tinggi gambar
                   height: 150.0),
           Raisedbtn(),//button pertama
-          Raisedbtn2(),//button kedua
-          Raisedbtn3(),//button ketiga
+          Raisedbtn0(),//button kedua
+          Raisedbtn2(),//button ketiga
+          Raisedbtn3(),//button keempat
         ],)
       )
      )
@@ -64,6 +66,34 @@ class Raisedbtn extends StatelessWidget {//extrack button agar bisa melakukan na
       color: Colors.green,);//warna button
   }
 }
+
+class Raisedbtn0 extends StatelessWidget {//extrack button agar bisa melakukan navigasi
+  const Raisedbtn0({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton.icon(//membuat raisedbutton
+            onPressed: (){  Navigator.push(//jika di pencet atau diklik akan berpindah halaman
+        context,
+        MaterialPageRoute(builder: (context) => new HomePeg()//menyetting halaman yang dituju
+        ),
+      );
+      },
+            shape: RoundedRectangleBorder(//agar button tidak terlalu kotak
+                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            label: Text(' Data Pegawai ', //text pada button
+                   style: TextStyle(color: Colors.white),),
+            icon: Icon(Icons.account_circle_rounded,color :Colors.white,),//icon pada button 
+            textColor: Colors.white,//warna text button
+            splashColor: Colors.white,//memberi efek jika dipencet
+            color: Colors.greenAccent,);//warna button
+  }
+}
+
+
+
 class Raisedbtn2 extends StatelessWidget {//extrack button agar bisa melakukan navigasi
   const Raisedbtn2({
     Key key,

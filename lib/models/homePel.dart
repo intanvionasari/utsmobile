@@ -50,7 +50,7 @@ class HomePelState extends State<HomePel> {
       ]),
     );
   }
-  Future<Pelanggan> navigateToEntryForm(BuildContext context, Pelanggan pelanggan) async {//digunakan untuk form barang
+  Future<Pelanggan> navigateToEntryForm(BuildContext context, Pelanggan pelanggan) async {//digunakan untuk form pelanggan
     var result = await Navigator.push(context,//navigasi 
         MaterialPageRoute(builder: (BuildContext context) {
       return EntryFormPelanggan(pelanggan);//mengembalikan nilai entry form dg membawa data pelanggan
